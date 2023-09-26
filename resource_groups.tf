@@ -1,5 +1,5 @@
-resource "azurerm_resource_group" "hub_ars" {
-  name     = "hub_ars"
+resource "azurerm_resource_group" "hub_nonprod_ars" {
+  name     = "hub_nonprod_ars"
   location = var.location
 }
 

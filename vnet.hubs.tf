@@ -1,31 +1,31 @@
-# Hub virtual network for Azure Route Server sidecar
+# Hub virtual network for non-production Azure Route Server sidecar
 
-resource "azurerm_virtual_network" "hub_ars" {
+resource "azurerm_virtual_network" "hub_nonprod_ars" {
   name                = "ars-h-vnet001"
-  resource_group_name = azurerm_resource_group.hub_ars.name
+  resource_group_name = azurerm_resource_group.hub_nonprod_ars.name
   address_space       = ["10.100.0.0/24"]
   location            = var.location
 }
 
-resource "azurerm_subnet" "hub_ars_route_server" {
+resource "azurerm_subnet" "hub_nonprod_ars_route_server" {
   name                 = "RouteServerSubnet"
-  resource_group_name  = azurerm_resource_group.hub_ars.name
-  virtual_network_name = azurerm_virtual_network.hub_ars.name
+  resource_group_name  = azurerm_resource_group.hub_nonprod_ars.name
+  virtual_network_name = azurerm_virtual_network.hub_nonprod_ars.name
   address_prefixes     = ["10.100.0.128/26"]
 }
 
-resource "azurerm_subnet" "hub_ars_default" {
+resource "azurerm_subnet" "hub_nonprod_ars_default" {
   name                 = "Default"
-  resource_group_name  = azurerm_resource_group.hub_ars.name
-  virtual_network_name = azurerm_virtual_network.hub_ars.name
+  resource_group_name  = azurerm_resource_group.hub_nonprod_ars.name
+  virtual_network_name = azurerm_virtual_network.hub_nonprod_ars.name
   address_prefixes     = ["10.100.0.0/26"]
 }
 
 # The following is not possible due to platform restrictions on the RouteServerSubnet
 
-# resource "azurerm_route_table" "hub_ars_route_server" {
+# resource "azurerm_route_table" "hub_nonprod_ars_route_server" {
 #   name                          = "r-h-udr"
-#   resource_group_name           = azurerm_resource_group.hub_ars.name
+#   resource_group_name           = azurerm_resource_group.hub_nonprod_ars.name
 #   location                      = var.location
 #   disable_bgp_route_propagation = false
 
@@ -38,9 +38,9 @@ resource "azurerm_subnet" "hub_ars_default" {
 
 # }
 
-# resource "azurerm_subnet_route_table_association" "hub_ars_route_server" {
-#   subnet_id      = azurerm_subnet.hub_ars_route_server.id
-#   route_table_id = azurerm_route_table.hub_ars_route_server.id
+# resource "azurerm_subnet_route_table_association" "hub_nonprod_ars_route_server" {
+#   subnet_id      = azurerm_subnet.hub_nonprod_ars_route_server.id
+#   route_table_id = azurerm_route_table.hub_nonprod_ars_route_server.id
 # }
 
 # Hub virtual network for non-production zone

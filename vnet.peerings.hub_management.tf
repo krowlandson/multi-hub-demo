@@ -71,13 +71,13 @@ resource "azurerm_virtual_network_peering" "spoke_to_hub_management" {
 #   use_remote_gateways          = false
 # }
 
-# # Connect hub_management to hub_ars
+# # Connect hub_management to hub_nonprod_ars
 
-# # resource "azurerm_virtual_network_peering" "hub_management_to_hub_ars" {
-# #   name                      = "hub_management_to_hub_ars"
+# # resource "azurerm_virtual_network_peering" "hub_management_to_hub_nonprod_ars" {
+# #   name                      = "hub_management_to_hub_nonprod_ars"
 # #   resource_group_name       = azurerm_resource_group.hub_management.name
 # #   virtual_network_name      = azurerm_virtual_network.hub_management.name
-# #   remote_virtual_network_id = azurerm_virtual_network.hub_ars.id
+# #   remote_virtual_network_id = azurerm_virtual_network.hub_nonprod_ars.id
 
 # #   allow_virtual_network_access = true
 # #   allow_forwarded_traffic      = false

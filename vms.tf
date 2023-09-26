@@ -22,9 +22,9 @@ module "virtual_machines" {
       script_path          = "${path.root}/scripts/install_rras.ps1"
       enable_ip_forwarding = true
     }
-    r-h-test-vm001 = {
-      resource_group_name = azurerm_resource_group.hub_ars.name
-      subnet_id           = azurerm_subnet.hub_ars_default.id
+    n-r-test-vm001 = {
+      resource_group_name = azurerm_resource_group.hub_nonprod_ars.name
+      subnet_id           = azurerm_subnet.hub_nonprod_ars_default.id
       script_path         = "${path.root}/scripts/enable_icmp.ps1"
     }
     n-h-test-vm001 = {
