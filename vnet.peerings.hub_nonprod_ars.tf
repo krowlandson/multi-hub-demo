@@ -3,7 +3,6 @@ locals {
     "spoke_nonprod_001",
     "spoke_nonprod_002",
     "spoke_nonprod_003",
-    "spoke_management",
   ]
   hub_nonprod_ars_hubs = [
     "hub_nonprod",

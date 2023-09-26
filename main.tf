@@ -33,6 +33,7 @@ locals {
     onprem_dc1_nonprod    = azurerm_virtual_network.onprem_dc1_nonprod
     onprem_dc1_management = azurerm_virtual_network.onprem_dc1_management
     hub_nonprod_ars       = azurerm_virtual_network.hub_nonprod_ars
+    hub_management_ars    = azurerm_virtual_network.hub_management_ars
     hub_nonprod           = azurerm_virtual_network.hub_nonprod
     hub_internet          = azurerm_virtual_network.hub_internet
     hub_management        = azurerm_virtual_network.hub_management

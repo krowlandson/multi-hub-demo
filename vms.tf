@@ -7,24 +7,29 @@ module "virtual_machines" {
     n-h-rras-vm001 = {
       resource_group_name  = azurerm_resource_group.hub_nonprod.name
       subnet_id            = azurerm_subnet.hub_nonprod_nva.id
-      script_path          = "${path.root}/scripts/install_rras.ps1"
+      script_path          = "${path.root}/scripts/enable_icmp.ps1"
       enable_ip_forwarding = true
     }
     i-h-rras-vm001 = {
       resource_group_name  = azurerm_resource_group.hub_internet.name
       subnet_id            = azurerm_subnet.hub_internet_nva.id
-      script_path          = "${path.root}/scripts/install_rras.ps1"
+      script_path          = "${path.root}/scripts/enable_icmp.ps1"
       enable_ip_forwarding = true
     }
     m-h-rras-vm001 = {
       resource_group_name  = azurerm_resource_group.hub_management.name
       subnet_id            = azurerm_subnet.hub_management_nva.id
-      script_path          = "${path.root}/scripts/install_rras.ps1"
+      script_path          = "${path.root}/scripts/enable_icmp.ps1"
       enable_ip_forwarding = true
     }
     n-r-test-vm001 = {
       resource_group_name = azurerm_resource_group.hub_nonprod_ars.name
       subnet_id           = azurerm_subnet.hub_nonprod_ars_default.id
+      script_path         = "${path.root}/scripts/enable_icmp.ps1"
+    }
+    m-r-test-vm001 = {
+      resource_group_name = azurerm_resource_group.hub_management_ars.name
+      subnet_id           = azurerm_subnet.hub_management_ars_default.id
       script_path         = "${path.root}/scripts/enable_icmp.ps1"
     }
     n-h-test-vm001 = {

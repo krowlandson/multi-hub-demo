@@ -3,6 +3,11 @@ resource "azurerm_resource_group" "hub_nonprod_ars" {
   location = var.location
 }
 
+resource "azurerm_resource_group" "hub_management_ars" {
+  name     = "hub_management_ars"
+  location = var.location
+}
+
 resource "azurerm_resource_group" "hub_nonprod" {
   name     = "hub_nonprod"
   location = var.location

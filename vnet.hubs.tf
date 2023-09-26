@@ -43,6 +43,29 @@ resource "azurerm_subnet" "hub_nonprod_ars_default" {
 #   route_table_id = azurerm_route_table.hub_nonprod_ars_route_server.id
 # }
 
+# Hub virtual network for management Azure Route Server sidecar
+
+resource "azurerm_virtual_network" "hub_management_ars" {
+  name                = "ars-h-vnet001"
+  resource_group_name = azurerm_resource_group.hub_management_ars.name
+  address_space       = ["10.100.1.0/24"]
+  location            = var.location
+}
+
+resource "azurerm_subnet" "hub_management_ars_route_server" {
+  name                 = "RouteServerSubnet"
+  resource_group_name  = azurerm_resource_group.hub_management_ars.name
+  virtual_network_name = azurerm_virtual_network.hub_management_ars.name
+  address_prefixes     = ["10.100.1.128/26"]
+}
+
+resource "azurerm_subnet" "hub_management_ars_default" {
+  name                 = "Default"
+  resource_group_name  = azurerm_resource_group.hub_management_ars.name
+  virtual_network_name = azurerm_virtual_network.hub_management_ars.name
+  address_prefixes     = ["10.100.1.0/26"]
+}
+
 # Hub virtual network for non-production zone
 
 resource "azurerm_virtual_network" "hub_nonprod" {
