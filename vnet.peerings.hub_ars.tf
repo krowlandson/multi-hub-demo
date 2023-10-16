@@ -23,7 +23,7 @@ resource "azurerm_virtual_network_peering" "hub_ars_to_spoke" {
   remote_virtual_network_id = local.azurerm_virtual_network_config[each.value].id
 
   allow_virtual_network_access = true
-  allow_forwarded_traffic      = true
+  allow_forwarded_traffic      = false
   allow_gateway_transit        = contains(local.hub_ars_spokes, each.value)
   use_remote_gateways          = false
 
@@ -40,8 +40,8 @@ resource "azurerm_virtual_network_peering" "spoke_to_hub_ars" {
   remote_virtual_network_id = local.azurerm_virtual_network_config["hub_ars"].id
 
   allow_virtual_network_access = true
-  allow_forwarded_traffic      = true
-  allow_gateway_transit        = contains(local.hub_ars_spokes, each.value)
+  allow_forwarded_traffic      = false
+  allow_gateway_transit        = false
   use_remote_gateways          = contains(local.hub_ars_spokes, each.value)
 
   # The following dependency is needed when enabling use_remote_gateways
